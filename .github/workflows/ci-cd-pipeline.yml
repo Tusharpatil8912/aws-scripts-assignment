@@ -26,12 +26,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt  # Ensure requirements.txt exists at the root
 
-      - name: Set up AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1  # Specify the region you're working with
+      - name: Set up AWS CLI
+        run: |
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set region us-east-1  # Update to your desired region
 
       - name: Run tests
         run: |
@@ -40,7 +39,6 @@ jobs:
           # If using unittest: python -m unittest discover
           echo "Run your tests here"  # Replace with actual test command
 
-      - name: Deploy to S3
+      - name: Deploy to AWS S3 bucket
         run: |
-          # Deploy to AWS S3 bucket (replace with your own bucket name)
           aws s3 cp . s3://tushar-static-site-bucket-2025/ --recursive
