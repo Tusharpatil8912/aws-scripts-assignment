@@ -41,4 +41,5 @@ jobs:
 
       - name: Deploy to AWS S3 bucket
         run: |
-          aws s3 cp . s3://tushar-static-site-bucket-2025/ --recursive
+          # Make sure you're using the correct path for your files
+          aws s3 cp ./ s3://tushar-static-site-bucket-2025/ --recursive
