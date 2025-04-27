@@ -1,0 +1,40 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger the workflow on pull requests to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          # If you have test scripts, run them here
+          # For example: python -m unittest discover
+          echo "Run your tests here"  # Replace with actual test command
+
+      - name: Deploy (optional)
+        run: |
+          # If you have deployment steps (e.g., to AWS, DigitalOcean, etc.), add them here.
+          # For example:
+          # aws s3 cp . s3://your-bucket-name/ --recursive
+          echo "Deployment step (if applicable)"
