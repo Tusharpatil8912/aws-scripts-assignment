@@ -33,9 +33,7 @@ jobs:
           # If using unittest: python -m unittest discover
           echo "Run your tests here"  # Replace with actual test command
 
-      - name: Deploy (optional)
+      - name: Deploy to S3
         run: |
-          # Replace with your deployment commands, for example:
-          # Deploy to AWS (S3):
-          # aws s3 cp . s3://your-bucket-name/ --recursive
-          echo "Deployment step (if applicable)"
+          # Deploy to AWS S3 bucket (replace with your own bucket name)
+          aws s3 cp . s3://tushar-static-site-bucket-2025/ --recursive
