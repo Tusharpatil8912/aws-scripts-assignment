@@ -1,0 +1,60 @@
+Steps to Create an S3 Bucket for Static Website Hosting
+
+1. Login to AWS Management Console
+   - Open your web browser and go to [AWS Management Console](https://aws.amazon.com/).
+   - Log in using your credentials
+
+2. Navigate to S3 Service
+   - In the AWS Console, use the search bar to search for S3.
+   - Click on S3 from the list of services to open the S3 dashboard.
+
+3. Create a New Bucket:
+   - Click on the Create bucket button to start the process.
+   - Enter a unique name** for your bucket (e.g., tushar-static-website-2025).
+   - Choose a region for your bucket (e.g.,ap-south-1).
+   
+4. Set Bucket Permissions:
+   - Scroll down to the Block Public Access settings.
+   - Uncheck the option for Block all public access.
+   - Acknowledge the warning that you are making the bucket publicly accessible.
+   
+5. Create the Bucket:
+   - Once you have filled in all the settings, click on the **Create bucket** button to finish.
+
+6. Enable Static Website Hosting:
+   - After the bucket is created, open the bucket by clicking its name.
+   - Go to the Properties tab.
+   - Scroll down to the Static website hosting section and click Edit.
+   - Select Enable and set the Index document to 'index.html'. Optionally, set the Error document to 'error.html'.
+   - Click Save changes.
+
+7. Upload the HTML File:
+   - Go to the Objects tab of your bucket.
+   - Click on the Upload button.
+   - Select and upload the `index.html` file (you can create a simple HTML file or use an existing one).
+
+8. Set Bucket Policy to Make the File Public:
+   - In the Permissions tab, scroll down to Bucket Policy.
+   - Add the following JSON bucket policy to allow public access to the files in the bucket:
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": "*",
+         "Action": "s3:GetObject",
+         "Resource": "arn:aws:s3:::your-bucket-name/*"
+       }
+     ]
+   }
+   ```
+   - Replace your-bucket-name with the actual name of your S3 bucket.
+   - Click Save changes.
+
+9. Access the Website:
+   - Go to the **Properties tab of your bucket.
+   - Under Static website hosting, you will see a URL (http://tushar-static-site-bucket-2025.s3-website.ap-south-1.amazonaws.com).
+   - Open this URL in your browser to view your static website.
+
