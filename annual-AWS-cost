@@ -1,0 +1,11 @@
+The estimated annual AWS cost for your setup is approximately $737.54. This includes:
+
+EC2 Instance: $100.22
+
+S3 Storage: $27.60
+
+S3 Data Transfer: $9.72
+
+CloudWatch Logs: $600
+
+Lambda invocations and execution time fall within the free tier, so they incur no additional cost.
